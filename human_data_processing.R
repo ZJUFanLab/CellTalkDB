@@ -247,7 +247,7 @@ human_uniprot<- readRDS('data/human_uniprot.rds')
 # geneating keyword in searching term for API
 human_ppi1$search_term<- 'NA'
 
-for (i in 1:10) {
+for (i in 1:nrow(human_ppi1)) {
   print(i)
   gene1<- human_ppi1$ligand_gene_symbol[i]
   gene1_name<- unique(human_gene_info[human_gene_info$Symbol == gene1,]$Synonyms)

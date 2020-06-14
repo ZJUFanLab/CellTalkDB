@@ -221,7 +221,88 @@ colnames(mouse_ppi1)<- c('ligand','receptor',
 # load uniprot protein knowledegbase
 mouse_uniprot<- readRDS('data/mouse_uniprot.rds')
 
+# geneating keyword in searching term for API
+mouse_ppi1$search_term<- 'NA'
+
+for (i in 1:nrow(mouse_ppi1)) {
+  print(i)
+  gene1<- mouse_ppi1$ligand_gene_symbol[i]
+  gene1_name<- unique(mouse_gene_info[mouse_gene_info$Symbol == gene1,]$Synonyms)
+  gene1_name<- gene1_name[which(gene1_name != '-')]
+  
+  if (gene1 %in% mouse_uniprot$gene) {
+    gene1_pro<- unique(mouse_uniprot[mouse_uniprot$gene == gene1,]$protein)
+    gene1<- c(gene1,gene1_pro)
+  }
+  
+  gene1<- c(gene1,gene1_name)
+  gene1<- unique(gene1)
+  gene1_search_API<- paste0(gene1,'%5BTitle%2FAbstract%5D')
+  gene1_name<- gene1[1]
+  gene1_name_search_API<- gene1_search_API[1]
+  
+  if (length(gene1) > 1) {
+    for (j in 2:length(gene1)) {
+      gene1_name<- paste(gene1_name,gene1[j],sep = ',')
+      gene1_name_search_API<- paste(gene1_name_search_API,'OR',gene1_search_API[j],sep = '+')
+    }
+  }
+  
+  
+  gene2<- mouse_ppi1$receptor_gene_symbol[i]
+  gene2_name<- unique(mouse_gene_info[mouse_gene_info$Symbol == gene2,]$Synonyms)
+  gene2_name<- gene2_name[which(gene2_name != '-')]
+  
+  if (gene2 %in% mouse_uniprot$gene) {
+    gene2_pro<- unique(mouse_uniprot[mouse_uniprot$gene == gene2,]$protein)
+    gene2<- c(gene2,gene2_pro)
+  }
+  
+  gene2<- c(gene2,gene2_name)
+  gene2<- unique(gene2)
+  gene2_search_API<- paste0(gene2,'%5BTitle%2FAbstract%5D')
+  gene2_name<- gene2[1]
+  gene2_name_search_API<- gene2_search_API[1]
+  
+  if (length(gene2) > 1) {
+    for (j in 2:length(gene2)) {
+      gene2_name<- paste(gene2_name,gene2[j],sep = ',')
+      gene2_name_search_API<- paste(gene2_name_search_API,'OR',gene2_search_API[j],sep = '+')
+    }
+  }
+  
+  gene1_name_search_API<- paste0('%28',gene1_name_search_API,'%29')
+  gene2_name_search_API<- paste0('%28',gene2_name_search_API,'%29')
+  
+  gene_name_search_API<- paste(gene1_name_search_API,'AND',gene2_name_search_API,sep = '+')
+  
+  mouse_ppi1[i,"search_term"]<- gene_name_search_API
+  
+}
 
 
+# Exclude LR pairs without matched articles with Pubmed E-utilities
 
+# Warning: please read the rule of NCBI E-utilities usage carefully before running the codes below.
+mouse_ppi1$count<- '-1'
 
+for (i in 1:nrow(human_ppi1)) {
+  print(i)
+  d1<- mouse_ppi1[i,]
+  d1_term<- d1$search_term
+  # API key is removed
+  d1_url<- paste('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=',d1_term,sep = '')
+  d1_res<- getURL(url = d1_url)
+  d1_1<- str_locate(string = d1_res,pattern = '<Count>')
+  d1_2<- str_locate(string = d1_res,pattern = '</Count>')
+  d1_res1<- str_sub(string = d1_res,start = d1_1[2]+1,end = d1_2[1]-1)
+  mouse_ppi1$count[i]<- d1_res1
+  # Sys.sleep is removed
+}
+
+# Remove LR pairs without matched artciles
+
+mouse_ppi1$count<- as.numeric(mouse_ppi1$count)
+mouse_ppi1<- mouse_ppi1[mouse_ppi1$count > 0,]
+
+# obtain 222,222 potential LR pairs for manual verfication.
