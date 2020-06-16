@@ -10,7 +10,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 # Data Curation
 
-<svg src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/data_curation.svg'>
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/data_curation.svg'>
 
 # Data Acess
 
