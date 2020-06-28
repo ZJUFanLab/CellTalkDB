@@ -323,9 +323,9 @@ for (i in 1:nrow(human_ppi1)) {
   # Sys.sleep is removed
 }
 
-# Remove LR pairs without matched artciles
+# Remove LR pairs without matched articles
 
 human_ppi1$count<- as.numeric(human_ppi1$count)
 human_ppi1<- human_ppi1[human_ppi1$count > 0,]
 
-# obtain 222,222 potential LR pairs for manual verfication.
+# obtain 25,317 potential LR pairs for manual verification.
