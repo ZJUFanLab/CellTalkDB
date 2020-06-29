@@ -6,7 +6,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 # Data Acess
 
-LR pairs in CellTalkDB can be also download in our website [http://tcm.zju.edu.cn/celltalkdb](http://tcm.edu.cn/celltalkdb)
+LR pairs in CellTalkDB can be also download in our website [http://tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb)
 
 Raw data for reproduction of our results can be download in the release page.
 
