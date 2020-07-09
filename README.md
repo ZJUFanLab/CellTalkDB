@@ -13,16 +13,18 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 [1] Xin Shao et al. New Avenues for Systematically Inferring Cell-Cell Communication: Through Single-Cell Transcriptomics Data.Protein Cell.2020 May 21.[doi: 10.1007/s13238-020-00727-5](https://link.springer.com/article/10.1007/s13238-020-00727-5)
 
-# Data curation
-
-<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.png'>
-
 # Download
 [![R data](https://img.shields.io/badge/R-data-blueviolet)](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) [![txt data](https://img.shields.io/badge/txt-data-ff69b4.svg)](http://tcm.zju.edu.cn/celltalkdb)
 
 - LR pairs for human and mouse can be download in [`database/lr_pairs.rds`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) 
-- Annotation data for LR pairs can be downloaded in [`data/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/data) and [`database/lr_pairs_ann.rds`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database)
+- Annotation data for LR pairs can be downloaded in [`data/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/data)
 - Raw data for reproduction of our results can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
+
+# Workflow
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.png'>
+
+# Annotation data
+[![Ensembl v99](https://img.shields.io/badge/Ensembl-v99-brightgreen)](http://www.ensembl.org) [![UniProt](https://img.shields.io/badge/UniProt-2020__03-yellowgreen)](https://www.uniprot.org/) [![NCBI](https://img.shields.io/badge/NCBI-2020--04--28-orange)](https://www.uniprot.org/)
 
 # About
 
