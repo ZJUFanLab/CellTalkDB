@@ -18,11 +18,12 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 <img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.png'>
 
 # Download
-<img src='https://img.shields.io/badge/R-data-blueviolet'> [![txt data](https://img.shields.io/badge/txt-data-ff69b4.svg)](http://tcm.zju.edu.cn/celltalkdb)
+[![R data](https://img.shields.io/badge/R-data-blueviolet)](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) [![txt data](https://img.shields.io/badge/txt-data-ff69b4.svg)](http://tcm.zju.edu.cn/celltalkdb)
 
-- Raw data for reproduction of our results can be downloaded in the release page.
-- LR pairs for human and mouse can be download in `database/lr_pairs.rds` 
-- Annotation data for LR pairs can be downloaded in `data/` and `database/lr_pairs_ann.rds`
+- LR pairs for human and mouse can be download in [`database/lr_pairs.rds`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) 
+- Annotation data for LR pairs can be downloaded in [`data/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/data) and [`database/lr_pairs_ann.rds`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database)
+- Raw data for reproduction of our results can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
 
 # About
-For more information, please visit our website.Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
+
+For more information, please visit our website [tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb/). Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
