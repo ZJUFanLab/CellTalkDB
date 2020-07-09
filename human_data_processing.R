@@ -89,6 +89,7 @@ for (i in 1:nrow(p_all)) {
 
 # load processed gene annotation from NCBI Gene database(gene2ensembl,updated in 2020.04.28)
 human_gene2ensembl<- readRDS(file = 'data/human_gene2ensembl.rds')
+human_gene_info<- readRDS(file = 'data/human_gene_info.rds')
 
 # annotate ppi with gene information in NCBI (gene2ensembl)
 p_all1<- p_all[p_all$protein_id %in% human_gene2ensembl$Ensembl_protein,]
@@ -102,67 +103,50 @@ p_all1<- p_all1[,c(3,2,1)]
 rownames(p_all1)<- 1:nrow(p_all1)
 
 p_all2<- p_all[!p_all$protein_id %in% human_gene2ensembl$Ensembl_protein,]
-p_all2<- p_all2[!p_all2$gene_id == 'NA',]
-p_all3<- p_all2[!p_all2$gene_id %in% human_gene2ensembl$Ensembl_gene_identifier,]
-p_all2<- p_all2[p_all2$gene_id %in% human_gene2ensembl$Ensembl_gene_identifier,]
-p_all2<- p_all2[,c(1,3)]
-human_gene2ensembl1<- human_gene2ensembl[human_gene2ensembl$Ensembl_gene_identifier %in% p_all2$gene_id,]
-human_gene2ensembl1<- human_gene2ensembl1[,c(2,1)]
-human_gene2ensembl1<- unique(human_gene2ensembl1)
+p_all3<- p_all2[!(p_all2$EntrezGene_id == 'NA' & p_all2$pinfo_name == 'NA'),]
+p_all2<- p_all2[!p_all2$protein_id %in% p_all3$protein_id,]
 
-rownames(human_gene2ensembl1)<- 1:nrow(human_gene2ensembl1)
-d1<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == 'ENSG00000104205' & human_gene2ensembl1$Gene_id == '56260',]
-human_gene2ensembl1<- human_gene2ensembl1[-as.integer(rownames(d1)),]
+p_all4<- p_all3[p_all3$EntrezGene_id == 'NA',]
+p_all3<- p_all3[!p_all3$protein_id %in% p_all4$protein_id,]
+p_all5<- p_all4[!p_all4$pinfo_name %in% human_gene_info$Symbol,]
+p_all4<- p_all4[!p_all4$protein_id %in% p_all5$protein_id,]
 
-rownames(human_gene2ensembl1)<- 1:nrow(human_gene2ensembl1)
-d1<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == 'ENSG00000104205' & human_gene2ensembl1$Gene_id == '100533105',]
-human_gene2ensembl1<- human_gene2ensembl1[-as.integer(rownames(d1)),]
+human_gene_info1<- human_gene_info[human_gene_info$Symbol %in% p_all4$pinfo_name,c("GeneID","Symbol")]
+human_gene_info1<- unique(human_gene_info1)
+rownames(human_gene_info1)<- human_gene_info1$Symbol
+human_gene_info1<- human_gene_info1[p_all4$pinfo_name,]
+p_all4$EntrezGene_id<- human_gene_info1$GeneID
 
-rownames(human_gene2ensembl1)<- 1:nrow(human_gene2ensembl1)
-d1<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == 'ENSG00000112541' & human_gene2ensembl1$Gene_id == '90632',]
-human_gene2ensembl1<- human_gene2ensembl1[-as.integer(rownames(d1)),]
+# load gene annotation 
+human_ann_manual<- readRDS(file = 'data/human_ann_manual.rds')
+p_all2$pinfo_name<- human_ann_manual$EntrezGene_id
+p_all2_1<- p_all2[!p_all2$pinfo_name %in% human_gene_info$Symbol,]
+p_all2<- p_all2[!p_all2$protein_id %in% p_all2_1$protein_id,]
+p_all2_1<- p_all2_1[p_all2_1$pinfo_name %in% human_gene_info$Synonyms,]
+p_all2_1<- p_all2_1[p_all2_1$pinfo_name %in% c('C10orf113','KIAA1257'),]
+p_all2_1[p_all2_1$pinfo_name == 'KIAA1257',]$EntrezGene_id<- '57501'
+p_all2_1[p_all2_1$pinfo_name == 'C10orf113',]$EntrezGene_id<- '10529'
 
-rownames(human_gene2ensembl1)<- 1:nrow(human_gene2ensembl1)
-d1<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == 'ENSG00000137843' & human_gene2ensembl1$Gene_id == '106821730',]
-human_gene2ensembl1<- human_gene2ensembl1[-as.integer(rownames(d1)),]
+human_gene_info1<- human_gene_info[human_gene_info$Symbol %in% p_all2$pinfo_name,c("GeneID","Symbol")]
+human_gene_info1<- unique(human_gene_info1)
+human_gene_info1<- human_gene_info1[-which(human_gene_info1$GeneID == '100187828'),]
+rownames(human_gene_info1)<- human_gene_info1$Symbol
+human_gene_info1<- human_gene_info1[p_all2$pinfo_name,]
+p_all2$EntrezGene_id<- human_gene_info1$GeneID
 
-rownames(human_gene2ensembl1)<- 1:nrow(human_gene2ensembl1)
-d1<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == 'ENSG00000197912' & human_gene2ensembl1$Gene_id == '101930112',]
-human_gene2ensembl1<- human_gene2ensembl1[-as.integer(rownames(d1)),]
+p_all2<- rbind(p_all2,p_all3,p_all4)
 
-rownames(human_gene2ensembl1)<- 1:nrow(human_gene2ensembl1)
-d1<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == 'ENSG00000204131' & human_gene2ensembl1$Gene_id == '392490',]
-human_gene2ensembl1<- human_gene2ensembl1[-as.integer(rownames(d1)),]
-
-rownames(human_gene2ensembl1)<- 1:nrow(human_gene2ensembl1)
-d1<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == 'ENSG00000213694' & human_gene2ensembl1$Gene_id == '286223',]
-human_gene2ensembl1<- human_gene2ensembl1[-as.integer(rownames(d1)),]
-
-p_all2$gene_id1<- 'NA'
+p_all2<- p_all2[,c(1,3,5)]
 colnames(p_all2)<- colnames(p_all1)
 
-for (i in 1:nrow(p_all2)) {
-  print(i)
-  d1<- p_all2[i,]
-  d2<- human_gene2ensembl1[human_gene2ensembl1$Ensembl_gene_identifier == d1$Ensembl_gene_identifier,]
-  p_all2[i,"Gene_id"]<- d2$Gene_id
-}
+p_all<- rbind(p_all1,p_all2)
 
-p_all3[p_all3$gene_id == 'ENSG00000269226',]$EntrezGene_id<- '286527'
-p_all3<- p_all3[,c(1,3,5)]
-colnames(p_all3)<- colnames(p_all1)
-
-p_all1<- rbind(p_all1,p_all2,p_all3)
-p_all<- p_all1
-# obtain 18,698 unique proteins
+# obtain 19,101 unique proteins
 
 # match human_ppi
 human_ppi<- human_ppi[human_ppi$protein1 %in% p_all$Ensembl_protein,]
 human_ppi<- human_ppi[human_ppi$protein2 %in% p_all$Ensembl_protein,]
-# obtain 5,579,369 ppi
-
-# load processed gene information from NCBI Gene database(Homo_sapiens.gene_info, updated in 2020.04.28)
-human_gene_info<- readRDS(file = 'data/human_gene_info.rds')
+# obtain 5,796,319 ppi
 
 # annotate
 p_all$gene_symbol<- 'NA'
@@ -197,9 +181,12 @@ human_ppi<- human_ppi[,c(1,2,3,7,4,8,5,9,6,10)]
 # load classified protein data
 human_potential_lr<- readRDS(file = 'data/human_potential_lr.rds')
 
-# obtain 1,936 potential ligands and 3,089 potential receptors
+# obtain 1,959 potential ligands and 3,157 potential receptors
 human_ligand<- human_potential_lr[human_potential_lr$Non_lr_gene_manual == 'ligand',]
+human_ligand<- human_ligand[human_ligand$type_gene == 'protein-coding',]
+
 human_receptor<- human_potential_lr[human_potential_lr$Non_lr_gene_manual == 'receptor',]
+human_receptor<- human_receptor[human_receptor$type_gene == 'protein-coding',]
 
 # match ligands and receptors
 human_ppi1<- human_ppi[human_ppi$protein1 %in% human_ligand$Ensembl_protein & human_ppi$protein2 %in% human_receptor$Ensembl_protein,]
@@ -239,7 +226,7 @@ colnames(human_ppi1)<- c('ligand','receptor',
                          'ligand_gene_id','receptor_gene_id',
                          'ligand_gene_symbol','receptor_gene_symbol',
                          'ligand_description','receptor_description','com_gene')
-# obtain 255,413 potential LR pairs
+# obtain 265,203 potential LR pairs
 
 # load uniprot protein knowledegbase
 human_uniprot<- readRDS('data/human_uniprot.rds')

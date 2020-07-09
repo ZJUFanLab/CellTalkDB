@@ -84,6 +84,7 @@ for (i in 1:nrow(p_all)) {
 
 # load processed gene annotation from NCBI Gene database(gene2ensembl,updated in 2020.04.28)
 mouse_gene2ensembl<- readRDS(file = 'data/mouse_gene2ensembl.rds')
+mouse_gene_info<- readRDS(file = 'data/mouse_gene_info.rds')
 
 # annotate ppi with gene information in NCBI (gene2ensembl)
 p_all1<- p_all[p_all$protein_id %in% mouse_gene2ensembl$Ensembl_protein,]
@@ -96,49 +97,61 @@ p_all1<- mouse_gene2ensembl1
 p_all1<- p_all1[,c(3,2,1)]
 rownames(p_all1)<- 1:nrow(p_all1)
 
-
 p_all2<- p_all[!p_all$protein_id %in% mouse_gene2ensembl$Ensembl_protein,]
-p_all2<- p_all2[!p_all2$gene_id == 'NA',]
-p_all3<- p_all2[!p_all2$gene_id %in% mouse_gene2ensembl$Ensembl_gene_identifier,]
-p_all2<- p_all2[p_all2$gene_id %in% mouse_gene2ensembl$Ensembl_gene_identifier,]
-p_all2<- p_all2[,c(1,3)]
-mouse_gene2ensembl1<- mouse_gene2ensembl[mouse_gene2ensembl$Ensembl_gene_identifier %in% p_all2$gene_id,]
-mouse_gene2ensembl1<- mouse_gene2ensembl1[,c(2,1)]
-mouse_gene2ensembl1<- unique(mouse_gene2ensembl1)
+p_all3<- p_all2[!(p_all2$EntrezGene_id == 'NA' & p_all2$pinfo_name == 'NA'),]
+p_all2<- p_all2[!p_all2$protein_id %in% p_all3$protein_id,]
 
-rownames(mouse_gene2ensembl1)<- 1:nrow(mouse_gene2ensembl1)
-d1<- mouse_gene2ensembl1[mouse_gene2ensembl1$Ensembl_gene_identifier == 'ENSMUSG00000072694' & mouse_gene2ensembl1$Gene_id == '330173',]
-mouse_gene2ensembl1<- mouse_gene2ensembl1[-as.integer(rownames(d1)),]
+p_all4<- p_all3[p_all3$EntrezGene_id == 'NA',]
+p_all3<- p_all3[!p_all3$protein_id %in% p_all4$protein_id,]
+p_all5<- p_all4[!p_all4$pinfo_name %in% mouse_gene_info$Symbol,]
+p_all4<- p_all4[!p_all4$protein_id %in% p_all5$protein_id,]
+p_all5<- p_all5[p_all5$pinfo_name %in% mouse_gene_info$Synonyms,]
+for (i in 1:nrow(p_all5)) {
+  d1<- p_all5[i,"pinfo_name"]
+  d2<- unique(mouse_gene_info[mouse_gene_info$Synonyms == d1,]$GeneID)
+  if (length(d2) == 1) {
+    p_all5[i,"EntrezGene_id"]<- d2
+  }
+}
+p_all5<- p_all5[p_all5$EntrezGene_id != 'NA',]
 
-rownames(mouse_gene2ensembl1)<- 1:nrow(mouse_gene2ensembl1)
-d1<- mouse_gene2ensembl1[mouse_gene2ensembl1$Ensembl_gene_identifier == 'ENSMUSG00000079033' & mouse_gene2ensembl1$Gene_id == '105980076',]
-mouse_gene2ensembl1<- mouse_gene2ensembl1[-as.integer(rownames(d1)),]
+mouse_gene_info1<- mouse_gene_info[mouse_gene_info$Symbol %in% p_all4$pinfo_name,c("GeneID","Symbol")]
+mouse_gene_info1<- unique(mouse_gene_info1)
+rownames(mouse_gene_info1)<- mouse_gene_info1$Symbol
+mouse_gene_info1<- mouse_gene_info1[p_all4$pinfo_name,]
+p_all4$EntrezGene_id<- mouse_gene_info1$GeneID
 
-p_all2$gene_id1<- 'NA'
-colnames(p_all2)<- colnames(p_all1)
+# load gene annotation 
+mouse_ann_manual<- readRDS(file = 'data/mouse_ann_manual.rds')
+p_all2$pinfo_name<- mouse_ann_manual$pinfo_name
+p_all2_1<- p_all2[!p_all2$pinfo_name %in% mouse_gene_info$Symbol,]
+p_all2<- p_all2[!p_all2$protein_id %in% p_all2_1$protein_id,]
+p_all2_1<- p_all2_1[p_all2_1$pinfo_name %in% mouse_gene_info$Synonyms,]
+p_all2_1[p_all2_1$pinfo_name == 'Gm15130',]$EntrezGene_id<- '67575'
 
+mouse_gene_info1<- mouse_gene_info[mouse_gene_info$Symbol %in% p_all2$pinfo_name,c("GeneID","Symbol")]
+mouse_gene_info1<- unique(mouse_gene_info1)
 for (i in 1:nrow(p_all2)) {
-  print(i)
-  d1<- p_all2[i,]
-  d2<- mouse_gene2ensembl1[mouse_gene2ensembl1$Ensembl_gene_identifier == d1$Ensembl_gene_identifier,]
-  p_all2[i,"Gene_id"]<- d2$Gene_id
+  d1<- p_all2$pinfo_name[i]
+  d2<- unique(mouse_gene_info1[mouse_gene_info1$Symbol == d1,]$GeneID)
+  if (length(d2) == 1) {
+    p_all2[i,"EntrezGene_id"]<- d2
+  }
 }
 
-p_all3<- p_all3[,c(1,3,5)]
-colnames(p_all3)<- colnames(p_all1)
+p_all2<- rbind(p_all2,p_all2_1,p_all3,p_all4,p_all5)
 
-p_all1<- rbind(p_all1,p_all2,p_all3)
-rm(p_all2,p_all3,d1,d2,mouse_gene2ensembl1,i)
-p_all<- p_all1
-# obtain 20,140 unique proteins
+p_all2<- p_all2[,c(1,3,5)]
+colnames(p_all2)<- colnames(p_all1)
+
+p_all<- rbind(p_all1,p_all2)
+
+# obtain 21,016 unique proteins
 
 # match mouse_ppi
 mouse_ppi<- mouse_ppi[mouse_ppi$protein1 %in% p_all$Ensembl_protein,]
 mouse_ppi<- mouse_ppi[mouse_ppi$protein2 %in% p_all$Ensembl_protein,]
-# obtain 5,602,309 ppi
-
-# load processed gene information from NCBI Gene database(Homo_sapiens.gene_info, updated in 2020.04.28)
-mouse_gene_info<- readRDS(file = 'data/mouse_gene_info.rds')
+# obtain 5,900,136 ppi
 
 # annotate
 p_all$gene_symbol<- 'NA'
@@ -173,8 +186,10 @@ mouse_ppi<- mouse_ppi[,c(1,2,3,7,4,8,5,9,6,10)]
 # load classified protein data
 mouse_potential_lr<- readRDS(file = 'data/mouse_potential_lr.rds')
 
-# obtain 2,005 potential ligands and 4,124 potential receptors
+# obtain 2,032 potential ligands and 4,269 potential receptors
 mouse_ligand<- mouse_potential_lr[mouse_potential_lr$Non_lr_gene_manual == 'ligand',]
+mouse_ligand<- mouse_ligand[mouse_ligand$type_of_gene == 'protein-coding',]
+
 mouse_receptor<- mouse_potential_lr[mouse_potential_lr$Non_lr_gene_manual == 'receptor',]
 mouse_receptor<- mouse_receptor[mouse_receptor$type_of_gene == 'protein-coding',]
 
@@ -216,7 +231,7 @@ colnames(mouse_ppi1)<- c('ligand','receptor',
                          'ligand_gene_id','receptor_gene_id',
                          'ligand_gene_symbol','receptor_gene_symbol',
                          'ligand_description','receptor_description','com_gene')
-# obtain 255,584 potential LR pairs
+# obtain 259,397 potential LR pairs
 
 # load uniprot protein knowledegbase
 mouse_uniprot<- readRDS('data/mouse_uniprot.rds')
