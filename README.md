@@ -8,8 +8,8 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 |Species  |LR pairs|Ligands|Receptors|Evidences|
 |:---:    |:---:   |:---:  | :---:   | :---:   |
-|__Human__| 3,398  |815    |780      |1,557    |
-|__Mouse__| 1,988  |NA     |NA       |NA       |
+|__Human__| __3,398__  |815    |780      |1,557    |
+|__Mouse__| __1,988__  |NA     |NA       |NA       |
 
 [1] Xin Shao et al. New Avenues for Systematically Inferring Cell-Cell Communication: Through Single-Cell Transcriptomics Data.Protein Cell.2020 May 21.[doi: 10.1007/s13238-020-00727-5](https://link.springer.com/article/10.1007/s13238-020-00727-5)
 
