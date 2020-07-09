@@ -22,7 +22,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 - Raw data for reproduction of our results can be downloaded in the release page.
 - LR pairs for human and mouse can be download in `database/lr_pairs.rds` 
-- Annotation data for LR pairs can be downloaded in `database/lr_pairs_ann.rds`
+- Annotation data for LR pairs can be downloaded in `data/` and `database/lr_pairs_ann.rds`
 
 # About
 For more information, please visit our website.Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
