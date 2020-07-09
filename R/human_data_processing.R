@@ -88,8 +88,8 @@ for (i in 1:nrow(p_all)) {
 }
 
 # load processed gene annotation from NCBI Gene database(gene2ensembl,updated in 2020.04.28)
-human_gene2ensembl<- readRDS(file = 'data/human_gene2ensembl.rds')
-human_gene_info<- readRDS(file = 'data/human_gene_info.rds')
+human_gene2ensembl<- readRDS(file = '../data/human_gene2ensembl.rds')
+human_gene_info<- readRDS(file = '../data/human_gene_info.rds')
 
 # annotate ppi with gene information in NCBI (gene2ensembl)
 p_all1<- p_all[p_all$protein_id %in% human_gene2ensembl$Ensembl_protein,]
@@ -118,7 +118,7 @@ human_gene_info1<- human_gene_info1[p_all4$pinfo_name,]
 p_all4$EntrezGene_id<- human_gene_info1$GeneID
 
 # load gene annotation 
-human_ann_manual<- readRDS(file = 'data/human_ann_manual.rds')
+human_ann_manual<- readRDS(file = '../data/human_ann_manual.rds')
 p_all2$pinfo_name<- human_ann_manual$EntrezGene_id
 p_all2_1<- p_all2[!p_all2$pinfo_name %in% human_gene_info$Symbol,]
 p_all2<- p_all2[!p_all2$protein_id %in% p_all2_1$protein_id,]
@@ -179,7 +179,7 @@ human_ppi<- human_ppi[,c(1,2,3,7,4,8,5,9,6,10)]
 
 # classify proteins into poteintial ligands and receptors manually
 # load classified protein data
-human_potential_lr<- readRDS(file = 'data/human_potential_lr.rds')
+human_potential_lr<- readRDS(file = '../data/human_potential_lr.rds')
 
 # obtain 1,959 potential ligands and 3,157 potential receptors
 human_ligand<- human_potential_lr[human_potential_lr$Non_lr_gene_manual == 'ligand',]
@@ -229,7 +229,7 @@ colnames(human_ppi1)<- c('ligand','receptor',
 # obtain 265,203 potential LR pairs
 
 # load uniprot protein knowledegbase
-human_uniprot<- readRDS('data/human_uniprot.rds')
+human_uniprot<- readRDS('../data/human_uniprot.rds')
 
 # geneating keyword in searching term for API
 human_ppi1$search_term<- 'NA'

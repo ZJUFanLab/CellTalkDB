@@ -83,8 +83,8 @@ for (i in 1:nrow(p_all)) {
 }
 
 # load processed gene annotation from NCBI Gene database(gene2ensembl,updated in 2020.04.28)
-mouse_gene2ensembl<- readRDS(file = 'data/mouse_gene2ensembl.rds')
-mouse_gene_info<- readRDS(file = 'data/mouse_gene_info.rds')
+mouse_gene2ensembl<- readRDS(file = '../data/mouse_gene2ensembl.rds')
+mouse_gene_info<- readRDS(file = '../data/mouse_gene_info.rds')
 
 # annotate ppi with gene information in NCBI (gene2ensembl)
 p_all1<- p_all[p_all$protein_id %in% mouse_gene2ensembl$Ensembl_protein,]
@@ -122,7 +122,7 @@ mouse_gene_info1<- mouse_gene_info1[p_all4$pinfo_name,]
 p_all4$EntrezGene_id<- mouse_gene_info1$GeneID
 
 # load gene annotation 
-mouse_ann_manual<- readRDS(file = 'data/mouse_ann_manual.rds')
+mouse_ann_manual<- readRDS(file = '../data/mouse_ann_manual.rds')
 p_all2$pinfo_name<- mouse_ann_manual$pinfo_name
 p_all2_1<- p_all2[!p_all2$pinfo_name %in% mouse_gene_info$Symbol,]
 p_all2<- p_all2[!p_all2$protein_id %in% p_all2_1$protein_id,]
@@ -184,7 +184,7 @@ mouse_ppi<- mouse_ppi[,c(1,2,3,7,4,8,5,9,6,10)]
 
 # classify proteins into poteintial ligands and receptors manually
 # load classified protein data
-mouse_potential_lr<- readRDS(file = 'data/mouse_potential_lr.rds')
+mouse_potential_lr<- readRDS(file = '../data/mouse_potential_lr.rds')
 
 # obtain 2,032 potential ligands and 4,269 potential receptors
 mouse_ligand<- mouse_potential_lr[mouse_potential_lr$Non_lr_gene_manual == 'ligand',]
@@ -234,7 +234,7 @@ colnames(mouse_ppi1)<- c('ligand','receptor',
 # obtain 259,397 potential LR pairs
 
 # load uniprot protein knowledegbase
-mouse_uniprot<- readRDS('data/mouse_uniprot.rds')
+mouse_uniprot<- readRDS('../data/mouse_uniprot.rds')
 
 # geneating keyword in searching term for API
 mouse_ppi1$search_term<- 'NA'
