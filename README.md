@@ -13,13 +13,16 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 [1] Xin Shao et al. New Avenues for Systematically Inferring Cell-Cell Communication: Through Single-Cell Transcriptomics Data.Protein Cell.2020 May 21.[doi: 10.1007/s13238-020-00727-5](https://link.springer.com/article/10.1007/s13238-020-00727-5)
 
-# Data Curation
+# Data curation
 
 <img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.png'>
 
-LR pairs in CellTalkDB can be also download in our website [http://tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb)
+# Download
+<img src='https://img.shields.io/badge/R-data-blueviolet'>
 
-Raw data for reproduction of our results can be download in the release page.
+- Raw data for reproduction of our results can be downloaded in the release page.
+- LR pairs for human and mouse can be download in `database/lr_pairs.rds` 
+- Annotation data for LR pairs can be downloaded in `database/lr_pairs_ann.rds`
 
 # About
-Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
+For more information, please visit our website.Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
