@@ -24,7 +24,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 <img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.png'>
 
 # Annotation data
-[![Ensembl v99](https://img.shields.io/badge/Ensembl-v99-brightgreen)](http://www.ensembl.org) [![UniProt](https://img.shields.io/badge/UniProt-2020__03-yellowgreen)](https://www.uniprot.org/) [![NCBI](https://img.shields.io/badge/NCBI-2020--04--28-orange)](https://www.uniprot.org/)
+[![Ensembl v99](https://img.shields.io/badge/Ensembl-v99-brightgreen)](http://www.ensembl.org) [![UniProt](https://img.shields.io/badge/UniProt-2020__03-yellowgreen)](https://www.uniprot.org/) [![NCBI](https://img.shields.io/badge/NCBI-2020--04--28-orange)](https://www.ncbi.nlm.nih.gov/)
 
 # About
 
