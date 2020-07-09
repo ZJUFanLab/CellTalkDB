@@ -18,7 +18,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 <img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.png'>
 
 # Download
-<img src='https://img.shields.io/badge/R-data-blueviolet'>
+<img src='https://img.shields.io/badge/R-data-blueviolet'> [![txt data](https://img.shields.io/badge/txt-data-ff69b4.svg)](http://tcm.zju.edu.cn/celltalkdb)
 
 - Raw data for reproduction of our results can be downloaded in the release page.
 - LR pairs for human and mouse can be download in `database/lr_pairs.rds` 
