@@ -15,7 +15,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 # Data Curation
 
-<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.svg'>
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.png'>
 
 LR pairs in CellTalkDB can be also download in our website [http://tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb)
 
