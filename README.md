@@ -25,4 +25,4 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 
 # About
 
-For more information, please visit our website [tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb/). Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
+CellTalkDB manuscript is under submitting. For more information, please visit our website [tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb/). Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
