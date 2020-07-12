@@ -314,10 +314,3 @@ for (i in 1:nrow(human_ppi1)) {
   mouse_ppi1$count[i]<- d1_res1
   # Sys.sleep is removed
 }
-
-# Remove LR pairs without matched articles
-
-mouse_ppi1$count<- as.numeric(mouse_ppi1$count)
-mouse_ppi1<- mouse_ppi1[mouse_ppi1$count > 0,]
-
-# obtain 24,647 potential LR pairs for manual verification.
