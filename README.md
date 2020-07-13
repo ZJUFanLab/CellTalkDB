@@ -29,7 +29,7 @@ Users can download the LR pairs in CellTalkDB and replace the underlying databas
 To help users use CellTalkDB conveniently, we have developed an integrated R packge by only replacing the underlying database in SingleCellSignalR and keeping the other functions unchanged. Source package of `scsrctdb-1.0` can be download in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
 
 ### Install
-[![source package scsrctdb-1.0.tar.gz](https://img.shields.io/badge/source%20package-scsrctdb--1.0.tar.gz-blue)](https://github.com/ZJUFanLab/CellTalkDB/releases) [![R >3.6](https://img.shields.io/badge/R-%3E3.6-yellow)](https://github.com/ZJUFanLab/CellTalkDB/releases)
+[![R >3.6](https://img.shields.io/badge/R-%3E3.6-brightgreen)](https://github.com/ZJUFanLab/CellTalkDB/releases) [![source package scsrctdb-1.0.tar.gz](https://img.shields.io/badge/source%20package-scsrctdb--1.0.tar.gz-blue)](https://github.com/ZJUFanLab/CellTalkDB/releases)
 
 ```
 # download the source package of scsrctdb-1.0.tar.gz and install it
