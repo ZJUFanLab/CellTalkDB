@@ -19,9 +19,51 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 # Download
 [![R data](https://img.shields.io/badge/R-data-blueviolet)](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) [![txt data](https://img.shields.io/badge/txt-data-ff69b4.svg)](http://tcm.zju.edu.cn/celltalkdb) [![Ensembl v99](https://img.shields.io/badge/Ensembl-v99-brightgreen)](http://www.ensembl.org) [![UniProt](https://img.shields.io/badge/UniProt-2020__03-yellowgreen)](https://www.uniprot.org/) [![NCBI](https://img.shields.io/badge/NCBI-2020--04--28-orange)](https://www.ncbi.nlm.nih.gov/)
 
-- LR pairs for human and mouse can be download in [`database/lr_pairs.rds`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) 
-- Annotation data for LR pairs can be downloaded in [`data/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/data)
+- LR pairs for human and mouse can be download in[`database/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) 
+- Annotation data for LR pairs can be downloaded in[`data/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/data)
 - Raw data for reproduction of our results can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
+
+# Usage
+Users can download the LR pairs in CellTalkDB and replace the underlying database in SoptSC, SingleCellSignalR and CellPhoneDB, etc. to identify significantly enriched LR pairs and to infer cell-cell communications. 
+
+To help users use CellTalkDB conveniently, we have developed an integrated R packge by only replacing the underlying database in SingleCellSignalR and keeping the other functions unchanged. Source package of `scsrctdb-1.0` can be download in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
+
+### Install
+[![source package scsrctdb-1.0.tar.gz](https://img.shields.io/badge/source%20package-scsrctdb--1.0.tar.gz-blue)](https://github.com/ZJUFanLab/CellTalkDB/releases) [![R >3.6](https://img.shields.io/badge/R-%3E3.6-yellow)](https://github.com/ZJUFanLab/CellTalkDB/releases)
+
+```
+# download the source package of scsrctdb-1.0.tar.gz and install it
+# ensure the right directory for scsrctdb-1.0.tar.gz
+install.packages(pkgs = 'scsrctdb-1.0.tar.gz',repos = NULL, type = "source")
+```
+
+### Examples
+
+- For human scRNA-seq datasets
+```
+# based on 3,398 human LR pairs
+library(scsrctdb)
+cell_signaling(data = data,
+               genes = genes,
+               cluster = cluster,
+               gene_resive = T,
+               species = 'homo sapiens')
+```
+
+- For mouse scRNA-seq datasets
+```
+# based on 2,033 mouse LR pairs
+library(scsrctdb)
+cell_signaling(data = data,
+               genes = genes,
+               cluster = cluster,
+               gene_resive = T,
+               species = 'mus musculus')
+```
+__Note__: we have added an extra parameter`gene_resive`to revise gene symbols according to [NCBI Gene database](https://www.ncbi.nlm.nih.gov/gene) (updated in April 28,2020) as CellTalkDB has been revised with it. For more information about how to use SingleCellSignalR, please refer to [SCA-IRCM/SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1)
+
+
+
 
 # About
 
