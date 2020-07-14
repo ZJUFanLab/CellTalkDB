@@ -1,4 +1,4 @@
-# CellTalkDB
+# CellTalk DataBase
 
 ### A manually curated database of ligand-receptor interactions in human and mouse
 
