@@ -58,7 +58,7 @@ cell_signal <- cell_signaling(data = data,
 ```
 visualize(cell_signal)
 ```
-<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig1.svg' width = "300" height = "300">
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig1.svg' width = "500" height = "500">
 
 ```
 visualize(cell_signal,show.in = 1)
