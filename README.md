@@ -58,12 +58,12 @@ cell_signal <- cell_signaling(data = data,
 ```
 visualize(cell_signal)
 ```
-<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig1.svg' width = "500" height = "500">
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig1.svg' width = "600" height = "600">
 
 ```
 visualize(cell_signal,show.in = 1)
 ```
-<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig2.svg'>
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig2.svg' width = "600" height = "600">
 
 __Note__: we have added an extra parameter`gene_resive`to revise gene symbols according to [NCBI Gene database](https://www.ncbi.nlm.nih.gov/gene) (updated in April 28,2020) as CellTalkDB has been revised with it. For more information about how to use SingleCellSignalR, please refer to [wiki page](https://github.com/ZJUFanLab/CellTalkDB/wiki/SCSR_UsersGuide) or  [SCA-IRCM/SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1)
 
