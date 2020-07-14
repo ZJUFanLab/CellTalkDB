@@ -43,24 +43,36 @@ install.packages(pkgs = 'scsrctdb-1.0.tar.gz',repos = NULL, type = "source")
 ```
 # based on 3,398 human LR pairs
 library(scsrctdb)
-cell_signaling(data = data,
-               genes = genes,
-               cluster = cluster,
-               gene_resive = T,
-               species = 'homo sapiens')
+cell_signal <- cell_signaling(data = data,
+                              genes = genes,
+                              cluster = cluster,
+                              gene_resive = T,
+                              species = 'homo sapiens')
 ```
 
 - For mouse scRNA-seq datasets
 ```
 # based on 2,033 mouse LR pairs
 library(scsrctdb)
-cell_signaling(data = data,
-               genes = genes,
-               cluster = cluster,
-               gene_resive = T,
-               species = 'mus musculus')
+cell_signal <- cell_signaling(data = data,
+                              genes = genes,
+                              cluster = cluster,
+                              gene_resive = T,
+                              species = 'mus musculus')
 ```
-__Note__: we have added an extra parameter`gene_resive`to revise gene symbols according to [NCBI Gene database](https://www.ncbi.nlm.nih.gov/gene) (updated in April 28,2020) as CellTalkDB has been revised with it. For more information about how to use SingleCellSignalR, please refer to [SCA-IRCM/SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1)
+
+- Use visualize() for plotting
+```
+visualize(cell_signal)
+```
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig1.png'>
+
+```
+visualize(cell_signal,show.in = 1)
+```
+<img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/Fig2.png'>
+
+__Note__: we have added an extra parameter`gene_resive`to revise gene symbols according to [NCBI Gene database](https://www.ncbi.nlm.nih.gov/gene) (updated in April 28,2020) as CellTalkDB has been revised with it. For more information about how to use SingleCellSignalR, please refer to [wiki page](https://github.com/ZJUFanLab/CellTalkDB/wiki/SCSR_UsersGuide) or  [SCA-IRCM/SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1)
 
 
 
