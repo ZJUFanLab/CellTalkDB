@@ -61,7 +61,7 @@ cell_signal <- cell_signaling(data = data,
                               species = 'mus musculus')
 ```
 
-- Use visualize() for plotting
+- Use `visualize()` for plotting
 ```
 visualize(cell_signal)
 ```
