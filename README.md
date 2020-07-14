@@ -16,13 +16,6 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 # Workflow
 <img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.svg'>
 
-# Download
-[![R data](https://img.shields.io/badge/R-data-blueviolet)](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) [![txt data](https://img.shields.io/badge/txt-data-ff69b4.svg)](http://tcm.zju.edu.cn/celltalkdb) [![Ensembl v99](https://img.shields.io/badge/Ensembl-v99-brightgreen)](http://www.ensembl.org) [![UniProt](https://img.shields.io/badge/UniProt-2020__03-yellowgreen)](https://www.uniprot.org/) [![NCBI](https://img.shields.io/badge/NCBI-2020--04--28-orange)](https://www.ncbi.nlm.nih.gov/)
-
-- LR pairs for human and mouse can be download in[`database/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) 
-- Annotation data for LR pairs can be downloaded in[`data/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/data)
-- Raw data for reproduction of our results can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
-
 # Usage
 Users can download the LR pairs in CellTalkDB and replace the underlying database in [SoptSC](https://github.com/mkarikom/RSoptSC), [SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1) and [CellPhoneDB](https://github.com/Teichlab/cellphonedb), etc. to identify significantly enriched LR pairs and to infer cell-cell communications. 
 
@@ -74,8 +67,12 @@ visualize(cell_signal,show.in = 1)
 
 __Note__: we have added an extra parameter`gene_resive`to revise gene symbols according to [NCBI Gene database](https://www.ncbi.nlm.nih.gov/gene) (updated in April 28,2020) as CellTalkDB has been revised with it. For more information about how to use SingleCellSignalR, please refer to [wiki page](https://github.com/ZJUFanLab/CellTalkDB/wiki/SCSR_UsersGuide) or  [SCA-IRCM/SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1)
 
+# Download
+[![R data](https://img.shields.io/badge/R-data-blueviolet)](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) [![txt data](https://img.shields.io/badge/txt-data-ff69b4.svg)](http://tcm.zju.edu.cn/celltalkdb) [![Ensembl v99](https://img.shields.io/badge/Ensembl-v99-brightgreen)](http://www.ensembl.org) [![UniProt](https://img.shields.io/badge/UniProt-2020__03-yellowgreen)](https://www.uniprot.org/) [![NCBI](https://img.shields.io/badge/NCBI-2020--04--28-orange)](https://www.ncbi.nlm.nih.gov/)
 
-
+- LR pairs for human and mouse can be download in[`database/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/database) 
+- Annotation data for LR pairs can be downloaded in[`data/`](https://github.com/ZJUFanLab/CellTalkDB/tree/master/data)
+- Raw data for reproduction of our results can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
 
 # About
 
