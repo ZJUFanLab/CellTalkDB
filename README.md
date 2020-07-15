@@ -27,6 +27,7 @@ To help users use CellTalkDB conveniently, we have developed an integrated R pac
 ```
 # download the source package of scsrctdb-1.0.tar.gz and install it
 # ensure the right directory for scsrctdb-1.0.tar.gz
+# ensure the dependency packages have been installed
 install.packages(pkgs = 'scsrctdb-1.0.tar.gz',repos = NULL, type = "source")
 ```
 
