@@ -19,7 +19,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 # Usage
 Users can download the LR pairs in CellTalkDB and replace the underlying database in [SoptSC](https://github.com/mkarikom/RSoptSC), [SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1) and [CellPhoneDB](https://github.com/Teichlab/cellphonedb), etc. to identify significantly enriched LR pairs and to infer cell-cell communications. 
 
-To help users use CellTalkDB conveniently, we made the revised R package by only replacing the underlying database in SingleCellSignalR and keeping the other functions unchanged to guide users on how to use data on LR pairs in CellTalkDB for the analysis of cell-cell communications with transcriptomics data. Source package of `scsrctdb-1.0` can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
+__To help users use CellTalkDB conveniently, we made the revised R package by only replacing the underlying database in SingleCellSignalR and keeping the other functions unchanged to guide users on how to use data on LR pairs in CellTalkDB for the analysis of cell-cell communications with transcriptomics data__. Source package of `scsrctdb-1.0` can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
 
 ### Install the revised package!
 [![R >3.6](https://img.shields.io/badge/R-%3E3.6-brightgreen)](https://github.com/ZJUFanLab/CellTalkDB/releases) [![source package scsrctdb-1.0.tar.gz](https://img.shields.io/badge/source%20package-scsrctdb--1.0.tar.gz-blue)](https://github.com/ZJUFanLab/CellTalkDB/releases)
