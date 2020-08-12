@@ -21,7 +21,7 @@ Users can download the LR pairs in CellTalkDB and replace the underlying databas
 
 __To help users use CellTalkDB conveniently, we made the revised R package by only replacing the underlying database in SingleCellSignalR and keeping the other functions unchanged to guide users on how to use data on LR pairs in CellTalkDB for the analysis of cell-cell communications with transcriptomics data__. Source package of `scsrctdb-1.0` can be downloaded in the [release](https://github.com/ZJUFanLab/CellTalkDB/releases) page.
 
-### Install the revised package!
+### Install the revised package
 [![R >3.6](https://img.shields.io/badge/R-%3E3.6-brightgreen)](https://github.com/ZJUFanLab/CellTalkDB/releases) [![source package scsrctdb-1.0.tar.gz](https://img.shields.io/badge/source%20package-scsrctdb--1.0.tar.gz-blue)](https://github.com/ZJUFanLab/CellTalkDB/releases)
 
 ```
