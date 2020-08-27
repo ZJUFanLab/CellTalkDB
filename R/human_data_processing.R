@@ -181,7 +181,7 @@ human_ppi<- human_ppi[,c(1,2,3,7,4,8,5,9,6,10)]
 # load classified protein data
 human_potential_lr<- readRDS(file = '../data/human_potential_lr.rds')
 
-# obtain 1,959 potential ligands and 3,157 potential receptors
+# obtain 1,885 potential ligands and 3,131 potential receptors
 human_ligand<- human_potential_lr[human_potential_lr$Non_lr_gene_manual == 'ligand',]
 human_ligand<- human_ligand[human_ligand$type_gene == 'protein-coding',]
 
@@ -226,7 +226,7 @@ colnames(human_ppi1)<- c('ligand','receptor',
                          'ligand_gene_id','receptor_gene_id',
                          'ligand_gene_symbol','receptor_gene_symbol',
                          'ligand_description','receptor_description','com_gene')
-# obtain 265,203 potential LR pairs
+# obtain 259,356 potential LR pairs
 
 # load uniprot protein knowledegbase
 human_uniprot<- readRDS('../data/human_uniprot.rds')
