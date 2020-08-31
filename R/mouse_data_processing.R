@@ -186,7 +186,7 @@ mouse_ppi<- mouse_ppi[,c(1,2,3,7,4,8,5,9,6,10)]
 # load classified protein data
 mouse_potential_lr<- readRDS(file = '../data/mouse_potential_lr.rds')
 
-# obtain 2,032 potential ligands and 4,269 potential receptors
+# obtain 1,809 potential ligands and 4,152 potential receptors
 mouse_ligand<- mouse_potential_lr[mouse_potential_lr$Non_lr_gene_manual == 'ligand',]
 mouse_ligand<- mouse_ligand[mouse_ligand$type_of_gene == 'protein-coding',]
 
@@ -231,7 +231,7 @@ colnames(mouse_ppi1)<- c('ligand','receptor',
                          'ligand_gene_id','receptor_gene_id',
                          'ligand_gene_symbol','receptor_gene_symbol',
                          'ligand_description','receptor_description','com_gene')
-# obtain 259,397 potential LR pairs
+# obtain 229,651 potential LR pairs
 
 # load uniprot protein knowledegbase
 mouse_uniprot<- readRDS('../data/mouse_uniprot.rds')
