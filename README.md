@@ -17,7 +17,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 <img src='https://github.com/ZJUFanLab/CellTalkDB/blob/master/img/curation.svg'>
 
 # Cite
-[![DOI: 10.1093/bib/bbaa269](https://img.shields.io/badge/DOI-10.1093%2Fbib%2Fbbaa269-brightgreen)](https://academic.oup.com/bib/advance-article-abstract/doi/10.1093/bib/bbaa269/5955941) [![PMID: 33147626](https://img.shields.io/badge/PMID-33147626-blue)](https://pubmed.ncbi.nlm.nih.gov/33147626/)
+[![DOI: 10.1093/bib/bbaa269](https://img.shields.io/badge/DOI-10.1093%2Fbib%2Fbbaa269-brightgreen)](https://doi.org/10.1093/bib/bbaa269) [![PMID: 33147626](https://img.shields.io/badge/PMID-33147626-blue)](https://pubmed.ncbi.nlm.nih.gov/33147626/)
 
 Shao et al., CellTalkDB: a manually curated database of ligand–receptor interactions in humans and mice, Briefings in Bioinformatics, 04 November 2020 (online), bbaa269, [https://doi.org/10.1093/bib/bbaa269](https://doi.org/10.1093/bib/bbaa269)
 
