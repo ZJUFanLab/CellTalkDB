@@ -19,7 +19,7 @@ Cell-cell communications via secreting and receiving ligands frequently occur in
 # Cite
 [![DOI: 10.1093/bib/bbaa269](https://img.shields.io/badge/DOI-10.1093%2Fbib%2Fbbaa269-brightgreen)](https://academic.oup.com/bib/advance-article-abstract/doi/10.1093/bib/bbaa269/5955941) [![PMID: 33147626](https://img.shields.io/badge/PMID-33147626-blue)](https://pubmed.ncbi.nlm.nih.gov/33147626/)
 
-Shao et al., CellTalkDB: a manually curated database of ligand–receptor interactions in humans and mice, Briefings in Bioinformatics, bbaa269, [https://doi.org/10.1093/bib/bbaa269](https://doi.org/10.1093/bib/bbaa269)
+Shao et al., CellTalkDB: a manually curated database of ligand–receptor interactions in humans and mice, Briefings in Bioinformatics, 04 November 2020 (online), bbaa269, [https://doi.org/10.1093/bib/bbaa269](https://doi.org/10.1093/bib/bbaa269)
 
 # Usage
 Users can download the LR pairs in CellTalkDB and replace the underlying database in [SoptSC](https://github.com/mkarikom/RSoptSC), [SingleCellSignalR](https://github.com/SCA-IRCM/SingleCellSignalR_v1) and [CellPhoneDB](https://github.com/Teichlab/cellphonedb), etc. to identify significantly enriched LR pairs and to infer cell-cell communications. 
@@ -82,4 +82,4 @@ __Note__: we have added an extra parameter`gene_resive`to revise gene symbols ac
 
 # About
 
-CellTalkDB manuscript is under submitting. For more information, please visit our website [tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb/). Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn
+CellTalkDB repository was developed by Xin Shao. Should you have any questions, please contact Xin Shao at xin_shao@zju.edu.cn. For more information, please refer to our published paper [10.1093/bib/bbaa269](https://doi.org/10.1093/bib/bbaa269) or visit our website [tcm.zju.edu.cn/celltalkdb](http://tcm.zju.edu.cn/celltalkdb/)
